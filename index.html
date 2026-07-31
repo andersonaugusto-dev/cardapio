@@ -1,0 +1,1641 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monteiro's Lanches - Cardápio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@500;600;700&family=Roboto+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #100905;
+      --wood: #26150c;
+      --ink: #fff8e9;
+      --muted: #f4d7ad;
+      --yellow: #ffc400;
+      --orange: #f47c00;
+      --red: #bd1014;
+      --green: #126a1d;
+      --line: rgba(255, 255, 255, .58);
+      --shadow: rgba(0, 0, 0, .55);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #050302;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Roboto Condensed", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 80% 4%, rgba(255, 158, 0, .24), transparent 16rem),
+        linear-gradient(90deg, rgba(255, 96, 0, .11) 0 2px, transparent 2px 120px),
+        linear-gradient(0deg, rgba(255, 151, 0, .10) 0 1px, transparent 1px 94px),
+        linear-gradient(rgba(16, 8, 4, .91), rgba(16, 8, 4, .95)),
+        url("assets/menu-original.jpg") center top / cover fixed;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100%, 1120px);
+      margin: 0 auto;
+      padding: clamp(12px, 4vw, 34px);
+    }
+
+    .poster {
+      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(255, 188, 0, .8);
+      background:
+        linear-gradient(90deg, rgba(255, 116, 0, .16), transparent 14%, transparent 86%, rgba(255, 116, 0, .16)),
+        rgba(9, 5, 3, .88);
+      box-shadow: 0 22px 60px var(--shadow);
+    }
+
+    .poster::before,
+    .poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border: 1px solid rgba(255, 117, 0, .46);
+    }
+
+    .poster::after {
+      inset: 8px;
+      border-color: rgba(255, 203, 0, .18);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 330px;
+      padding: clamp(18px, 4vw, 34px);
+      display: grid;
+      grid-template-columns: minmax(142px, 240px) minmax(0, 1fr) minmax(210px, 330px);
+      gap: clamp(16px, 3vw, 30px);
+      align-items: center;
+      background:
+        radial-gradient(circle at 78% 34%, rgba(255, 187, 0, .38), transparent 15rem),
+        radial-gradient(circle at 12% 18%, rgba(244, 124, 0, .28), transparent 14rem),
+        linear-gradient(120deg, rgba(3, 2, 1, .92), rgba(28, 10, 3, .84) 52%, rgba(6, 3, 1, .96)),
+        url("assets/menu-original.jpg") center 8% / cover no-repeat;
+      border-bottom: 2px solid rgba(244, 124, 0, .55);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero::before {
+      inset: 12px;
+      border: 1px solid rgba(255, 196, 0, .24);
+      box-shadow: inset 0 0 70px rgba(255, 102, 0, .18);
+    }
+
+    .hero::after {
+      right: 4%;
+      top: 16px;
+      width: min(44%, 440px);
+      height: 88%;
+      background:
+        radial-gradient(circle at 66% 26%, rgba(255, 196, 0, .34), transparent 22%),
+        radial-gradient(circle at 38% 54%, rgba(204, 16, 22, .34), transparent 27%);
+      filter: blur(10px);
+      opacity: .9;
+    }
+
+    .brand-mark {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      padding: 8px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(#110803, #110803) padding-box,
+        conic-gradient(from -25deg, #ff7b00, #ffd34a, #ff7b00, #7d2c00, #ff7b00) border-box;
+      border: 4px solid transparent;
+      box-shadow:
+        0 0 0 5px rgba(0, 0, 0, .42),
+        0 18px 34px rgba(0, 0, 0, .56),
+        0 0 36px rgba(255, 123, 0, .28);
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 121, 0, .34);
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 3px solid rgba(255, 239, 203, .82);
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .hero-title {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-transform: uppercase;
+      text-shadow: 0 5px 0 #050302, 0 0 26px rgba(0, 0, 0, .9);
+    }
+
+    .hero-title h1 {
+      margin: 0;
+      font-family: "Bangers", Impact, sans-serif;
+      font-size: clamp(72px, 10vw, 136px);
+      line-height: .74;
+      letter-spacing: 0;
+    }
+
+    .hero-title h1 span:first-child {
+      display: block;
+      color: #fff;
+    }
+
+    .hero-title h1 span:last-child {
+      display: block;
+      color: var(--yellow);
+      transform: skew(-8deg);
+      text-shadow: 5px 7px 0 var(--orange), 0 6px 0 #050302, 0 0 28px rgba(255, 190, 0, .46);
+    }
+
+    .tagline {
+      width: fit-content;
+      margin-top: 18px;
+      padding: 8px 36px 12px;
+      font-family: "Bangers", Impact, sans-serif;
+      font-size: clamp(25px, 4vw, 45px);
+      line-height: .9;
+      background:
+        linear-gradient(100deg, transparent 0 5%, #c51016 5% 92%, transparent 92%),
+        linear-gradient(180deg, rgba(255, 255, 255, .18), transparent);
+      transform: rotate(-2deg);
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 11px 0 rgba(0, 0, 0, .34);
+    }
+
+    .hero-photo {
+      position: relative;
+      min-height: 252px;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 14px;
+      padding: 16px;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .05), rgba(0, 0, 0, .42)),
+        url("assets/menu-original.jpg") right 6% / 296% auto no-repeat;
+      border: 1px solid rgba(255, 180, 0, .68);
+      border-radius: 10px;
+      box-shadow: inset 0 0 24px rgba(0, 0, 0, .34), 0 16px 30px rgba(0, 0, 0, .4);
+      overflow: hidden;
+    }
+
+    .hero-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, .62), transparent 45%);
+      pointer-events: none;
+    }
+
+    .order-label {
+      position: relative;
+      z-index: 1;
+      padding: 7px 14px 9px;
+      background: linear-gradient(120deg, #3d1605, #0c0602);
+      border: 1px solid rgba(255, 167, 0, .85);
+      border-radius: 6px;
+      color: var(--yellow);
+      font-family: "Bangers", Impact, sans-serif;
+      font-size: clamp(26px, 3vw, 36px);
+      text-shadow: 0 3px 0 #000;
+      transform: rotate(-3deg);
+      box-shadow: 0 9px 18px rgba(0, 0, 0, .42);
+    }
+
+    .hero-badge {
+      position: relative;
+      z-index: 1;
+      align-self: flex-start;
+      max-width: 150px;
+      padding: 8px 12px;
+      color: #fff;
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.02;
+      text-transform: uppercase;
+      background: rgba(191, 16, 21, .9);
+      border-left: 5px solid var(--yellow);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, .4);
+    }
+
+    .phone-main {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 15px 11px;
+      background: rgba(0, 0, 0, .9);
+      border: 1px solid rgba(255, 165, 0, .76);
+      border-radius: 10px;
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: clamp(25px, 3.1vw, 38px);
+      font-weight: 900;
+      line-height: 1;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, .48);
+      white-space: nowrap;
+    }
+
+    .wa {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      background: #19b444;
+      border: 3px solid #fff;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      padding: clamp(14px, 3vw, 28px);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .96fr);
+      gap: clamp(18px, 3vw, 30px);
+      align-items: start;
+    }
+
+    .column {
+      display: grid;
+      gap: clamp(13px, 2vw, 20px);
+    }
+
+    .section {
+      --accent: var(--yellow);
+      position: relative;
+      padding-top: 30px;
+    }
+
+    .section__title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: min(100%, 270px);
+      padding: 2px 20px 8px 56px;
+      color: #111;
+      font-family: "Bangers", Impact, sans-serif;
+      font-size: clamp(31px, 5vw, 45px);
+      line-height: .9;
+      text-shadow: 1px 1px 0 rgba(255, 255, 255, .28);
+      background:
+        linear-gradient(100deg, var(--accent), var(--yellow) 60%, transparent 92%);
+      transform: rotate(-1deg);
+      z-index: 2;
+    }
+
+    .section__title::before {
+      content: attr(data-icon);
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #111;
+      font-family: Arial, sans-serif;
+      font-size: 25px;
+      background: var(--accent);
+      border: 2px solid rgba(0, 0, 0, .25);
+    }
+
+    .items {
+      padding: 26px 0 0;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 7px;
+      align-items: end;
+      min-height: 28px;
+      font-size: clamp(17px, 2.05vw, 21px);
+      line-height: 1.16;
+    }
+
+    .item + .item {
+      margin-top: 7px;
+    }
+
+    .item__text {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px;
+      align-items: end;
+      min-width: 0;
+    }
+
+    .item__copy {
+      min-width: 0;
+    }
+
+    .item__copy strong {
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .item__copy span {
+      color: #fff7e5;
+    }
+
+    .leader {
+      height: 1px;
+      margin-bottom: 4px;
+      border-bottom: 2px dotted var(--line);
+      min-width: 18px;
+    }
+
+    .currency {
+      color: #fff;
+      font-weight: 900;
+      padding-bottom: 2px;
+      white-space: nowrap;
+    }
+
+    .price {
+      min-width: 58px;
+      padding: 3px 8px 4px;
+      text-align: center;
+      color: #0b0703;
+      background: var(--yellow);
+      border: 1px solid rgba(0, 0, 0, .25);
+      font-family: "Oswald", Arial, sans-serif;
+      font-weight: 900;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, .48);
+    }
+
+    .price.red-price {
+      color: #fff;
+      background: #c51a1e;
+      border-color: rgba(255, 255, 255, .55);
+    }
+
+    .compact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .78fr) minmax(190px, .55fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .box {
+      border-radius: 12px;
+      border: 2px solid rgba(255, 208, 0, .64);
+      padding: 16px 16px 18px;
+      background: rgba(20, 8, 4, .74);
+      box-shadow: inset 0 0 16px rgba(0, 0, 0, .44);
+    }
+
+    .box.red {
+      border-color: rgba(255, 184, 0, .55);
+      background: linear-gradient(135deg, rgba(206, 17, 25, .96), rgba(79, 0, 3, .92));
+    }
+
+    .box.green {
+      border-color: rgba(161, 255, 0, .58);
+      background: linear-gradient(135deg, rgba(20, 112, 28, .95), rgba(3, 53, 13, .92));
+    }
+
+    .box.orange {
+      border-color: rgba(255, 161, 0, .78);
+      background: linear-gradient(135deg, rgba(114, 55, 8, .94), rgba(23, 9, 3, .86));
+    }
+
+    .box h2 {
+      margin: 0 0 11px;
+      font-family: "Bangers", Impact, sans-serif;
+      font-size: clamp(31px, 4vw, 43px);
+      line-height: .9;
+      color: #fff;
+      text-shadow: 0 3px 0 #000;
+    }
+
+    .box h2 span {
+      font-family: "Roboto Condensed", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff5d2;
+      vertical-align: top;
+    }
+
+    .mini .item {
+      font-size: clamp(16px, 2vw, 20px);
+    }
+
+    .specials {
+      position: relative;
+      z-index: 1;
+      padding: 0 clamp(14px, 3vw, 28px) clamp(14px, 3vw, 28px);
+    }
+
+    .specials-grid {
+      display: grid;
+      grid-template-columns: 80px repeat(4, minmax(0, 1fr));
+      gap: 9px;
+      align-items: stretch;
+    }
+
+    .special-label {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      display: grid;
+      place-items: center;
+      padding: 10px 4px;
+      color: #060301;
+      background: linear-gradient(#ff8b00, #ff5100);
+      border-radius: 10px 10px 0 0;
+      font-family: "Bangers", Impact, sans-serif;
+      font-size: clamp(29px, 4vw, 42px);
+      line-height: .82;
+      text-align: center;
+    }
+
+    .special {
+      min-height: 162px;
+      padding: 15px;
+      border: 1px solid rgba(255, 169, 0, .85);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      /*background:*/
+      /*  linear-gradient(90deg, rgba(0, 0, 0, .84), rgba(0, 0, 0, .24)),*/
+      /*  url("assets/menu-original.jpg") center bottom / 360% auto no-repeat;*/
+      box-shadow: inset 0 0 18px rgba(0, 0, 0, .7);
+    }
+
+    .special h3 {
+      margin: 0 0 5px;
+      color: var(--yellow);
+      font-family: "Bangers", Impact, sans-serif;
+      font-size: clamp(32px, 4vw, 45px);
+      line-height: .9;
+      text-shadow: 0 3px 0 #000;
+    }
+
+    .special p {
+      margin: 0;
+      max-width: 62%;
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: clamp(18px, 2.4vw, 24px);
+      line-height: 1.03;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 #000;
+    }
+
+    .special .special-price {
+      margin-top: 8px;
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: clamp(25px, 3vw, 36px);
+      font-weight: 900;
+    }
+
+    .special .special-price small {
+      color: var(--yellow);
+      font-size: .58em;
+      margin-right: 5px;
+    }
+
+    .special.fries {
+      align-items: flex-end;
+      text-align: right;
+      /*background:*/
+      /*  linear-gradient(90deg, rgba(0, 0, 0, .62), rgba(0, 0, 0, .18)),*/
+      /*  url("assets/menu-original.jpg") right bottom / 380% auto no-repeat;*/
+    }
+
+    .special.fries p {
+      max-width: 100%;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding: 13px clamp(16px, 4vw, 36px) 18px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: center;
+      border-top: 2px solid rgba(244, 124, 0, .5);
+      background: rgba(0, 0, 0, .78);
+    }
+
+    .footer-cta {
+      padding: 7px 22px 9px;
+      color: #fff;
+      background: linear-gradient(100deg, transparent 0 5%, #ca1117 5% 94%, transparent 94%);
+      font-family: "Bangers", Impact, sans-serif;
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: .9;
+      transform: rotate(-2deg);
+      white-space: nowrap;
+    }
+
+    .footer-phones {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: clamp(25px, 4vw, 42px);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .quality {
+      max-width: 260px;
+      color: var(--yellow);
+      font-family: "Bangers", Impact, sans-serif;
+      font-size: clamp(20px, 2.5vw, 29px);
+      line-height: .88;
+      text-align: center;
+      text-shadow: 0 3px 0 #000;
+      transform: rotate(-3deg);
+    }
+
+    .mobile-order {
+      position: sticky;
+      bottom: 0;
+      z-index: 5;
+      display: none;
+      margin: 0;
+      padding: 10px 14px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #050302;
+      border-top: 2px solid var(--orange);
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: 23px;
+      font-weight: 900;
+      box-shadow: 0 -9px 22px rgba(0, 0, 0, .55);
+    }
+
+    .order-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 10;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border: 3px solid #fff8e9;
+      border-radius: 50%;
+      color: #160b02;
+      background: var(--yellow);
+      box-shadow: 0 5px 0 var(--orange), 0 9px 22px rgba(0, 0, 0, .58);
+      transition: transform .18s ease, filter .18s ease;
+    }
+
+    .order-float:hover {
+      filter: brightness(1.1);
+      transform: translateY(-3px) scale(1.04);
+    }
+
+    .order-float svg {
+      width: 29px;
+      height: 29px;
+      fill: currentColor;
+    }
+
+    .order-float__count {
+      position: absolute;
+      top: -6px;
+      right: -5px;
+      min-width: 24px;
+      height: 24px;
+      padding: 2px 5px;
+      display: grid;
+      place-items: center;
+      border: 2px solid #fff8e9;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--red);
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .order-panel {
+      position: relative;
+      z-index: 1;
+      margin: 0 clamp(14px, 3vw, 28px) clamp(18px, 3vw, 30px);
+      padding: clamp(18px, 3vw, 28px);
+      border: 2px solid rgba(255, 196, 0, .72);
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(55, 18, 4, .96), rgba(12, 5, 2, .96)),
+        url("assets/menu-original.jpg") center / cover;
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, .46), 0 14px 28px rgba(0, 0, 0, .35);
+      scroll-margin-top: 18px;
+    }
+
+    .order-panel__intro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .order-panel h2 {
+      margin: 0;
+      color: var(--yellow);
+      font-family: "Bangers", Impact, sans-serif;
+      font-size: clamp(36px, 5vw, 54px);
+      line-height: .9;
+      text-shadow: 0 3px 0 #000;
+    }
+
+    .order-panel__intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .order-layout {
+      display: grid;
+      grid-template-columns: minmax(250px, .85fr) minmax(0, 1.15fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .cart-box,
+    .address-box {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid rgba(255, 185, 0, .55);
+      border-radius: 9px;
+      background: rgba(0, 0, 0, .34);
+    }
+
+    .cart-box h3,
+    .address-box h3 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: 23px;
+      text-transform: uppercase;
+    }
+
+    .cart-empty {
+      margin: 0;
+      padding: 14px 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .cart-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cart-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 8px;
+      align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 1px dotted rgba(255, 255, 255, .35);
+    }
+
+    .cart-row__name {
+      min-width: 0;
+      font-weight: 900;
+    }
+
+    .cart-row__qty {
+      color: var(--yellow);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .cart-row__total {
+      min-width: 70px;
+      color: #fff;
+      font-weight: 900;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .cart-remove {
+      grid-column: 2 / -1;
+      justify-self: end;
+      padding: 0;
+      border: 0;
+      color: #ffcf75;
+      background: transparent;
+      font: inherit;
+      font-size: 13px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+      padding-top: 11px;
+      border-top: 2px solid rgba(255, 196, 0, .6);
+      color: var(--yellow);
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .address-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 5px;
+    }
+
+    .field--wide {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      color: #fff5d2;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      min-height: 40px;
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 196, 0, .52);
+      border-radius: 5px;
+      color: #1d0b03;
+      background: #fff8e9;
+      font: inherit;
+      font-size: 16px;
+    }
+
+    .field textarea {
+      min-height: 94px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: 3px solid rgba(255, 196, 0, .36);
+      border-color: var(--yellow);
+    }
+
+    .order-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 48px;
+      margin-top: 15px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 6px;
+      color: #081006;
+      background: linear-gradient(180deg, #39e568, #13a941);
+      box-shadow: 0 4px 0 #075e1e, 0 8px 16px rgba(0, 0, 0, .34);
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: 21px;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .order-submit:hover {
+      filter: brightness(1.08);
+    }
+
+    .order-submit:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #075e1e, 0 5px 12px rgba(0, 0, 0, .34);
+    }
+
+    .order-help {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .qty-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      min-width: 78px;
+      padding: 2px;
+      border: 1px solid rgba(255, 196, 0, .65);
+      border-radius: 5px;
+      background: rgba(0, 0, 0, .72);
+    }
+
+    .qty-control button {
+      width: 23px;
+      height: 23px;
+      padding: 0;
+      border: 0;
+      border-radius: 3px;
+      color: #160b02;
+      background: var(--yellow);
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .qty-control output {
+      min-width: 19px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .item--selected {
+      color: var(--yellow);
+    }
+
+    .item--unavailable {
+      opacity: .66;
+    }
+
+    .special-add {
+      align-self: flex-start;
+      margin-top: 8px;
+      padding: 5px 10px;
+      border: 1px solid var(--yellow);
+      border-radius: 4px;
+      color: #160b02;
+      background: var(--yellow);
+      font-family: "Oswald", Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .special.fries .special-add {
+      align-self: flex-end;
+    }
+
+    .special-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .special-options .special-add {
+      margin-top: 0;
+    }
+
+    @media (max-width: 860px) {
+      .page {
+        padding: 0;
+      }
+
+      .poster {
+        border-width: 0;
+        min-height: 100vh;
+      }
+
+      .poster::before,
+      .poster::after {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: 118px 1fr;
+        gap: 14px;
+        padding: 18px 14px 20px;
+      }
+
+      .brand-mark {
+        grid-row: span 2;
+        padding: 5px;
+        border-width: 3px;
+      }
+
+      .hero-title {
+        min-width: 0;
+      }
+
+      .hero-title h1 {
+        font-size: clamp(46px, 13vw, 61px);
+      }
+
+      .tagline {
+        margin-top: 8px;
+        padding: 6px 18px 8px;
+        font-size: 24px;
+      }
+
+      .hero-photo {
+        grid-column: 2;
+        min-height: 128px;
+        padding: 10px;
+        border-radius: 7px;
+        background-size: 560% auto;
+        background-position: right 2%;
+      }
+
+      .order-label {
+        font-size: 22px;
+        padding: 5px 9px 6px;
+      }
+
+      .hero-badge {
+        display: none;
+      }
+
+      .phone-main {
+        font-size: 20px;
+        padding: 6px 9px 7px;
+      }
+
+      .phone-main .wa {
+        width: 31px;
+        height: 31px;
+        font-size: 20px;
+        border-width: 2px;
+      }
+
+      main {
+        padding: 14px;
+      }
+
+      .menu-grid,
+      .compact-grid,
+      .order-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .order-panel__intro {
+        display: block;
+      }
+
+      .order-panel__intro p {
+        margin-top: 7px;
+        text-align: left;
+      }
+
+      .column {
+        gap: 15px;
+      }
+
+      .section {
+        padding-top: 28px;
+      }
+
+      .section__title {
+        min-width: min(100%, 232px);
+        padding-left: 50px;
+        font-size: 34px;
+      }
+
+      .section__title::before {
+        width: 35px;
+        height: 35px;
+        font-size: 21px;
+      }
+
+      .items {
+        padding-top: 52px;
+      }
+
+      .item {
+        grid-template-columns: minmax(0, 1fr) auto auto auto;
+        font-size: 17px;
+        gap: 5px;
+      }
+
+      .item + .item {
+        margin-top: 9px;
+      }
+
+      .item__text {
+        grid-template-columns: 1fr 22px;
+      }
+
+      .leader {
+        min-width: 22px;
+      }
+
+      .price {
+        min-width: 54px;
+        padding-inline: 6px;
+      }
+
+      .box {
+        border-radius: 9px;
+      }
+
+      .specials {
+        padding: 0 14px 14px;
+      }
+
+      .specials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .special-label {
+        writing-mode: initial;
+        transform: none;
+        min-height: 0;
+        border-radius: 9px;
+        font-size: 37px;
+        padding: 8px 14px;
+      }
+
+      .special {
+        min-height: 138px;
+      }
+
+      .special p {
+        max-width: 70%;
+      }
+
+      .footer {
+        grid-template-columns: 1fr;
+        gap: 9px;
+        text-align: center;
+      }
+
+      .footer-phones {
+        flex-wrap: wrap;
+        gap: 9px;
+        white-space: normal;
+      }
+
+      .quality {
+        justify-self: center;
+      }
+
+      .address-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .field--wide {
+        grid-column: auto;
+      }
+
+      .mobile-order {
+        display: flex;
+      }
+
+      .order-float {
+        right: 14px;
+        bottom: 68px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .hero {
+        grid-template-columns: 101px 1fr;
+      }
+
+      .hero-title h1 {
+        font-size: clamp(38px, 12.6vw, 50px);
+      }
+
+      .tagline {
+        font-size: 20px;
+      }
+
+      .phone-main {
+        font-size: 17px;
+      }
+
+      .item {
+        font-size: 15.5px;
+      }
+
+      .qty-control {
+        min-width: 70px;
+      }
+
+      .qty-control button {
+        width: 20px;
+        height: 21px;
+      }
+
+      .item__text {
+        grid-template-columns: 1fr 12px;
+      }
+
+      .leader {
+        min-width: 12px;
+      }
+
+      .currency {
+        font-size: 14px;
+      }
+
+      .price {
+        min-width: 49px;
+        font-size: 15px;
+      }
+
+      .box h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="poster">
+      <header class="hero">
+        <div class="brand-mark" aria-label="Monteiro's Lanches, desde 2023">
+          <img src="assets/logo-original.jpg" alt="Logo Monteiro's Lanches">
+        </div>
+
+        <div class="hero-title">
+          <h1><span>Monteiro's</span><span>Lanches</span></h1>
+          <div class="tagline">Sabor que vira<br>vício!</div>
+        </div>
+
+        <div class="hero-photo">
+          <div class="order-label">Faça seu pedido!</div>
+          <div class="hero-badge">Sabor, qualidade e atendimento</div>
+          <a class="phone-main" href="https://wa.me/5564992300390" aria-label="Chamar no WhatsApp 64 9 9230-0390">
+            <span class="wa">☎</span>
+            <span>64 9 9230-0390</span>
+          </a>
+        </div>
+      </header>
+
+      <main>
+        <div class="menu-grid">
+          <div class="column">
+            <section class="section">
+              <h2 class="section__title" data-icon="🍔">Diversos</h2>
+              <div class="items">
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Misto Quente</strong> <span>- Pão, Presunto, Mussarela, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">20,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Americano</strong> <span>- Pão, Presunto, Ovo, Mussarela, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">21,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Bauru</strong> <span>- Pão, Presunto e Mussarela</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">20,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Hot Dog</strong> <span>- Pão, Presunto, Mussarela, Salsicha, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">22,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Vegetariano</strong> <span>- Pão, Ovo, Mussarela, Batata, Milho, Abacaxi, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">26,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Churrasquinho</strong> <span>- Pão francês, Filé, 6 fatias de mussarela</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">29,00</span></div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2 class="section__title" data-icon="🍔">Hambúrguer</h2>
+              <div class="items">
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>X Burguer</strong> <span>- Pão, Hambúrguer, Presunto e Mussarela</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">26,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>X Salada</strong> <span>- Pão, Hambúrguer, Presunto, Mussarela, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">27,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>X Salada Especial</strong> <span>- Pão, Hambúrguer, Presunto, Mussarela, Alface, Tomate, Milho e Ovo</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">30,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>X Bacon</strong> <span>- Pão, Hambúrguer, Presunto, Mussarela, Bacon, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">32,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>X Bacon Especial</strong> <span>- Pão, Hambúrguer, Presunto, Mussarela, Bacon, Milho, Ovo, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">34,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>X Tudo</strong> <span>- Pão, Hambúrguer, Presunto, 2 Mussarela, Bacon, Milho, Ovo, Salsicha, Abacaxi, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">37,00</span></div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2 class="section__title" data-icon="🥩">Filé</h2>
+              <div class="items">
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Filé Salada</strong> <span>- Pão, Filé, Presunto, Mussarela, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">30,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Filé Salada Especial</strong> <span>- Pão, Filé, Presunto, Mussarela, Alface, Tomate, Milho e Ovo</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">33,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Filé Bacon</strong> <span>- Pão, Filé, Presunto, Mussarela, Bacon, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">35,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Filé Bacon Esp.</strong> <span>- Pão, Filé, Presunto, Mussarela, Bacon, Milho, Ovo, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">37,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Filé Tudo</strong> <span>- Pão, Filé, Presunto, 2 Mussarela, Bacon, Milho, Ovo, Salsicha, Abacaxi, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">40,00</span></div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2 class="section__title" data-icon="🐔">Frango</h2>
+              <div class="items">
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Frango Salada</strong> <span>- Pão, Frango, Presunto, Mussarela, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">29,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Frango Especial</strong> <span>- Pão, Frango, Presunto, Mussarela, Alface, Tomate, Milho e Ovo</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">32,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Frango Bacon</strong> <span>- Pão, Frango, Presunto, Mussarela, Bacon, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">32,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Frango Bacon Esp.</strong> <span>- Pão, Frango, Presunto, Mussarela, Bacon, Alface e Tomate, Milho e Ovo</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">34,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>X Tudo Frango</strong> <span>- Pão, Frango, Presunto, 2 Mussarelas, Bacon, Milho, Salsicha, Abacaxi, Ovo, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">37,00</span></div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2 class="section__title" data-icon="🌭">Calabresa</h2>
+              <div class="items">
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Calabresa Salada</strong> <span>- Pão, calabresa, presunto, mussarela, alface e tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">23,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Calabresa com ovo</strong> <span>- Pão, ovo, presunto, mussarela, alface e tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">25,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Calabresa especial</strong> <span>- Pão, hambúrguer, calabresa, ovo, presunto, mussarela, milho, alface e tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">34,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Tudo calabresa</strong> <span>- Pão, hambúrguer, calabresa, ovo, salsicha, presunto, mussarela, milho, abacaxi, alface e tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">37,00</span></div>
+              </div>
+            </section>
+          </div>
+
+          <div class="column">
+            <section class="section">
+              <h2 class="section__title" data-icon="🥩">Lombo</h2>
+              <div class="items">
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Lombo Salada</strong> <span>- Pão, Lombo, Presunto, Mussarela, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">23,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Lombo Especial</strong> <span>- Pão, Lombo, Presunto, Mussarela, Alface, Tomate, Milho e Ovo</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">32,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Lombo Bacon</strong> <span>- Pão, Lombo, Presunto, Mussarela, Bacon, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">32,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>Lombo Bacon Esp.</strong> <span>- Pão, Lombo, Presunto, Mussarela, Bacon, Alface e Tomate, Milho e Ovo</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">32,00</span></div>
+                <div class="item"><div class="item__text"><div class="item__copy"><strong>X Tudo Lombo</strong> <span>- Pão, Lombo, Presunto, 2 Mussarelas, Bacon, Milho, Salsicha, Abacaxi, Ovo, Alface e Tomate</span></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">34,00</span></div>
+              </div>
+            </section>
+
+            <div class="compact-grid">
+              <section class="section">
+                <h2 class="section__title" data-icon="+">Adicionais</h2>
+                <div class="items mini">
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Filé</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">10,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Frango</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">7,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Hambúrguer</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">7,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Lombo</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">7,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Catupiry</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">2,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Bacon</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">5,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Mussarela</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">7,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Salsicha</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">3,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Milho</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">2,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Ovo</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">2,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Batata Palha</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">2,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Presunto</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">2,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Abacaxi</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">2,00</span></div>
+                </div>
+              </section>
+
+              <div class="column">
+                <section class="box red mini">
+                  <h2>Cremes <span>500ml</span></h2>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Morango</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price red-price">20,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Maracujá</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price red-price">20,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Uva</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price red-price">20,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Açaí</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price red-price">20,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Graviola</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price red-price">20,00</span></div>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Cupuaçu</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price red-price">20,00</span></div>
+                </section>
+
+                <section class="box red mini">
+                  <h2>Sucos <span>500ml</span></h2>
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Polpas 500ml -Maracujá - Tamarindo - Abacaxi - Caju</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price red-price">10,00</span></div>
+<!--                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Maracujá - Tamarindo - Abacaxi - Caju</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price red-price">10,00</span></div>-->
+                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Laranja Natural 500ml</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price red-price">12,00</span></div>
+<!--                  <div class="item"><div class="item__text"><div class="item__copy"><strong>Lata</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price red-price">-</span></div>-->
+                </section>
+              </div>
+            </div>
+
+            <section class="box orange mini">
+              <h2>Cerveja lata</h2>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Skol e Antarctica</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">5,00</span></div>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Heineken (Long Neck)</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">10,00</span></div>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Amstel</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">5,00</span></div>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Devassa</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">5,00</span></div>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Brahma</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">5,00</span></div>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Kaiser</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">5,00</span></div>
+            </section>
+
+            <section class="box green mini">
+              <h2>Refrigerantes</h2>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Refrigerante Lata (Coca)</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">5,00</span></div>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Refrigerante Lata (Sabores)</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">5,00</span></div>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Refrigerante 600ml</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">7,00</span></div>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Refrigerante 1,5 Litros (Coca)</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">12,00</span></div>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Refrigerante 1,5 Litros (Sabores)</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">12,00</span></div>
+              <div class="item"><div class="item__text"><div class="item__copy"><strong>Refrigerante 2 Litros</strong></div><i class="leader"></i></div><span class="currency">R$</span><span class="price">14,00</span></div>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <section class="specials" aria-label="Lanches especiais">
+        <div class="specials-grid">
+          <div class="special-label">Lanches<br>Especiais</div>
+          <article class="special">
+            <div>
+              <h3>Xpacoça</h3>
+              <p>Xtudo duplo + batata</p>
+            </div>
+            <div class="special-price"><small>R$</small>55,00</div>
+            <button class="special-add" type="button" data-order-product="Xpacoça" data-order-price="55">Adicionar</button>
+          </article>
+          <article class="special">
+            <div>
+              <h3>X Monteiros</h3>
+              <p>Xtudo duplo + batata + frango + ovo</p>
+            </div>
+            <div class="special-price"><small>R$</small>60,00</div>
+            <button class="special-add" type="button" data-order-product="X Monteiros" data-order-price="60">Adicionar</button>
+          </article>
+          <article class="special">
+            <div>
+              <h3>X Larica</h3>
+              <p>Pão, bacon, queijo e Nutella</p>
+            </div>
+            <div class="special-price"><small>R$</small>28,00</div>
+            <button class="special-add" type="button" data-order-product="X Larica" data-order-price="28">Adicionar</button>
+          </article>
+          <article class="special fries">
+            <div>
+              <h3>Batata</h3>
+              <p>100gr</p>
+              <div class="special-price"><small>R$</small>10,00</div>
+              <button class="special-add" type="button" data-order-product="Batata 100gr" data-order-price="10">Adicionar</button>
+            </div>
+            <div>
+              <p>Especial 500gr</p>
+              <div class="special-price"><small>R$</small>30,00</div>
+              <button class="special-add" type="button" data-order-product="Batata especial 500gr" data-order-price="30">Adicionar</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-cta">Peça agora!</div>
+        <div class="footer-phones">
+          <span class="wa">☎</span>
+          <a href="https://wa.me/556434117222">64 3411-7222</a>
+          <span>|</span>
+          <a href="https://wa.me/5564981245727">64 98124-5727</a>
+        </div>
+        <div class="quality">Qualidade, sabor<br>e atendimento<br>que vicia!</div>
+      </footer>
+
+      <section class="order-panel" id="pedido" aria-labelledby="pedido-title">
+        <div class="order-panel__intro">
+          <div>
+            <h2 id="pedido-title">Monte seu pedido</h2>
+            <p>Escolha os itens, informe onde entregar e envie tudo pelo WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="order-layout">
+          <section class="cart-box" aria-labelledby="cart-title">
+            <h3 id="cart-title">Seu pedido</h3>
+            <p class="cart-empty" data-cart-empty>Selecione os produtos no cardápio acima.</p>
+            <ul class="cart-list" data-cart-list></ul>
+            <div class="cart-total">
+              <span>Total dos produtos</span>
+              <span data-cart-total>R$ 0,00</span>
+            </div>
+          </section>
+
+          <form class="address-box" data-order-form>
+            <h3>Endereço para entrega</h3>
+            <div class="address-fields">
+              <div class="field field--wide">
+                <label for="customer-name">Nome</label>
+                <input id="customer-name" name="nome" type="text" autocomplete="name" required>
+              </div>
+              <div class="field field--wide">
+                <label for="full-address">Endereço Completo</label>
+                <textarea id="full-address" name="endereco" autocomplete="street-address" required></textarea>
+              </div>
+              <div class="field field--wide">
+                <label for="customer-cpf">CPF</label>
+                <input id="customer-cpf" name="cpf" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}-?[0-9]{2}" required>
+              </div>
+            </div>
+            <button class="order-submit" type="submit">Enviar pedido pelo WhatsApp</button>
+            <p class="order-help">O WhatsApp abrirá com o pedido pronto para você confirmar.</p>
+          </form>
+        </div>
+      </section>
+
+      <a class="mobile-order" href="#pedido">
+        <span class="wa">☎</span>
+        <span>Montar pedido</span>
+      </a>
+
+      <a class="order-float" href="#pedido" aria-label="Ir para o carrinho e montar pedido">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M7 4H3v2h2l2.6 5.48-1 1.82A2 2 0 0 0 8.34 16H19v-2H8.76a.25.25 0 0 1-.22-.37L9.25 12h7.3a2 2 0 0 0 1.75-1.03L21.88 4H7.42L6.47 2H3v2h2l2.7 5.67L6.67 11.5A2 2 0 0 0 8.4 14H19v-2H8.4a.25.25 0 0 1-.22-.37L9 10h7.55a.5.5 0 0 0 .44-.26L19 6H7.42L7 4Zm1.5 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/>
+        </svg>
+        <span class="order-float__count" data-floating-count>0</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      // Altere somente este número quando o WhatsApp de destino mudar.
+      const whatsappNumber = '5564992300390';
+      const order = new Map();
+      const money = value => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+      const cartList = document.querySelector('[data-cart-list]');
+      const cartEmpty = document.querySelector('[data-cart-empty]');
+      const cartTotal = document.querySelector('[data-cart-total]');
+
+      const updateCart = () => {
+        cartList.replaceChildren();
+        let total = 0;
+        let quantity = 0;
+
+        order.forEach((item, key) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          quantity += item.quantity;
+
+          const row = document.createElement('li');
+          row.className = 'cart-row';
+          row.innerHTML = `
+            <span class="cart-row__name">${item.product}</span>
+            <span class="cart-row__qty">${item.quantity}x</span>
+            <span class="cart-row__total">${money(itemTotal)}</span>
+            <button class="cart-remove" type="button" data-remove-item="${key}">remover</button>
+          `;
+          cartList.append(row);
+        });
+
+        cartEmpty.hidden = order.size > 0;
+        cartTotal.textContent = money(total);
+        document.querySelectorAll('[data-order-key]').forEach(control => {
+          const current = order.get(control.dataset.orderKey);
+          const output = control.querySelector('output');
+          const item = control.closest('.item');
+          const quantityValue = current ? current.quantity : 0;
+          output.value = quantityValue;
+          output.textContent = quantityValue;
+          item?.classList.toggle('item--selected', quantityValue > 0);
+        });
+
+        document.querySelectorAll('[data-special-key]').forEach(button => {
+          const current = order.get(button.dataset.specialKey);
+          button.textContent = current ? `Adicionar (${current.quantity})` : 'Adicionar';
+        });
+
+        document.querySelector('[data-floating-count]').textContent = quantity > 99 ? '99+' : quantity;
+        document.querySelector('[data-order-form]').dataset.quantity = quantity;
+      };
+
+      const changeItem = (key, product, price, delta) => {
+        const current = order.get(key) || { product, price, quantity: 0 };
+        current.quantity = Math.max(0, current.quantity + delta);
+        if (current.quantity === 0) {
+          order.delete(key);
+        } else {
+          order.set(key, current);
+        }
+        updateCart();
+      };
+
+      document.querySelectorAll('main .item').forEach(item => {
+        const name = item.querySelector('.item__copy strong')?.textContent.trim();
+        const priceText = item.querySelector('.price')?.textContent.trim() || '';
+        const price = Number(priceText.replace(/\./g, '').replace(',', '.'));
+        if (!name || !Number.isFinite(price)) {
+          item.classList.add('item--unavailable');
+          return;
+        }
+
+        const key = `${name}-${price}`;
+        item.dataset.orderKey = key;
+        const control = document.createElement('span');
+        control.className = 'qty-control';
+        control.dataset.orderKey = key;
+        control.innerHTML = `
+          <button type="button" data-action="decrease" aria-label="Diminuir quantidade de ${name}">−</button>
+          <output aria-label="Quantidade de ${name}">0</output>
+          <button type="button" data-action="increase" aria-label="Aumentar quantidade de ${name}">+</button>
+        `;
+        item.append(control);
+      });
+
+      document.querySelectorAll('[data-order-product]').forEach(button => {
+        const product = button.dataset.orderProduct;
+        const price = Number(button.dataset.orderPrice);
+        const key = `${product}-${price}`;
+        button.dataset.specialKey = key;
+        button.addEventListener('click', () => changeItem(key, product, price, 1));
+      });
+
+      document.addEventListener('click', event => {
+        const button = event.target.closest('[data-action]');
+        if (button) {
+          const control = button.closest('[data-order-key]');
+          const item = control?.closest('.item');
+          const product = item?.querySelector('.item__copy strong')?.textContent.trim();
+          const priceText = item?.querySelector('.price')?.textContent.trim() || '';
+          const price = Number(priceText.replace(/\./g, '').replace(',', '.'));
+          if (control && product && Number.isFinite(price)) {
+            changeItem(control.dataset.orderKey, product, price, button.dataset.action === 'increase' ? 1 : -1);
+          }
+          return;
+        }
+
+        const remove = event.target.closest('[data-remove-item]');
+        if (remove) {
+          order.delete(remove.dataset.removeItem);
+          updateCart();
+        }
+      });
+
+      document.querySelector('[data-order-form]').addEventListener('submit', event => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        if (order.size === 0) {
+          alert('Selecione pelo menos um produto para montar o pedido.');
+          document.querySelector('#pedido').scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        const data = new FormData(form);
+        const lines = [...order.values()].map(item => `- ${item.quantity}x ${item.product} — ${money(item.price * item.quantity)}`);
+        const total = [...order.values()].reduce((sum, item) => sum + item.price * item.quantity, 0);
+        const address = [
+          `Nome: ${data.get('nome')}`,
+          `Endereço Completo: ${data.get('endereco')}`,
+          `CPF: ${data.get('cpf')}`
+        ];
+
+        const message = [
+          "Olá! Gostaria de fazer um pedido na Monteiro's Lanches.",
+          '',
+          'PEDIDO:',
+          ...lines,
+          `Total dos produtos: ${money(total)}`,
+          '',
+          'ENTREGA:',
+          ...address
+        ].join('\n');
+
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+      });
+
+      updateCart();
+    })();
+  </script>
+</body>
+</html>
